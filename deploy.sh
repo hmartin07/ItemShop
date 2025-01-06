@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Instalar Flutter en el entorno de Netlify
-git clone https://github.com/flutter/flutter.git -b stable
-export PATH="$PATH:`pwd`/flutter/bin"
+# Asegúrate de que Flutter esté instalado
+if ! command -v flutter &> /dev/null
+then
+    echo "Flutter no encontrado. Instalando..."
+    git clone https://github.com/flutter/flutter.git -b stable --depth 1
+    export PATH="$PATH:`pwd`/flutter/bin"
+fi
 
-# Asegurarse de que Flutter esté listo para la compilación
+# Verifica que Flutter esté listo para usar
 flutter doctor
 
-# Construir la web
+# Construye la aplicación Flutter para la web
 flutter build web

@@ -1,8 +1,6 @@
 [build]
-  base = "/"
-  publish = "build/web"
-  command = "bash deploy.sh"
+command = "bash deploy.sh"   # Ejecuta el archivo deploy.sh
+publish = "build/web"        # Publica la carpeta donde Flutter guarda los archivos web
 
-[build.environment]
-  FLUTTER_HOME = "/opt/flutter"
-  PATH = "$PATH:/opt/flutter/bin"
+[context.production.environment]
+FLUTTER_CHANNEL = "stable"   # Usar la rama estable de Flutter
